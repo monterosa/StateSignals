@@ -19,6 +19,7 @@
 		C729124317BBD2E200B7319E /* CPBTransitionTableTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C729124217BBD2E200B7319E /* CPBTransitionTableTest.m */; };
 		C729124A17BBD7BB00B7319E /* CPBSignalMachineTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C729124917BBD7BB00B7319E /* CPBSignalMachineTest.m */; };
 		C757548417BBBB2200AA5EF2 /* libReactiveCocoa-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C719ED6517BBBAE900401217 /* libReactiveCocoa-iOS.a */; };
+		DADD2DB71BEE377400F37D8E /* CPBTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = DADD2DB61BEE377400F37D8E /* CPBTransition.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +110,8 @@
 		C719ED5717BBBAE800401217 /* ReactiveCocoa.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactiveCocoa.xcodeproj; path = External/ReactiveCocoa/ReactiveCocoaFramework/ReactiveCocoa.xcodeproj; sourceTree = "<group>"; };
 		C729124217BBD2E200B7319E /* CPBTransitionTableTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPBTransitionTableTest.m; sourceTree = "<group>"; };
 		C729124917BBD7BB00B7319E /* CPBSignalMachineTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPBSignalMachineTest.m; sourceTree = "<group>"; };
+		DADD2DB51BEE377300F37D8E /* CPBTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPBTransition.h; sourceTree = "<group>"; };
+		DADD2DB61BEE377400F37D8E /* CPBTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPBTransition.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +176,8 @@
 				C7017AC317BBA42B00DB94B6 /* CPBSignalMachine.m */,
 				C719ED5417BBAB0F00401217 /* CPBTransitionTable.h */,
 				C719ED5517BBAB0F00401217 /* CPBTransitionTable.m */,
+				DADD2DB51BEE377300F37D8E /* CPBTransition.h */,
+				DADD2DB61BEE377400F37D8E /* CPBTransition.m */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -336,6 +341,7 @@
 			files = (
 				C7017AC417BBA42B00DB94B6 /* CPBSignalMachine.m in Sources */,
 				C719ED5617BBAB0F00401217 /* CPBTransitionTable.m in Sources */,
+				DADD2DB71BEE377400F37D8E /* CPBTransition.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

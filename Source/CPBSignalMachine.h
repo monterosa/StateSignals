@@ -42,24 +42,24 @@ extern NSInteger const CPBStateSignalsErrorCodeNoTransitionRegistered;
 
 #pragma mark Transition signals
 
-/// Returns a signal which sends a tuple for every transition made by this signal machine.
-/// The tuple consists of the "from state", the "to state", the input event, and the event context (or NSNull if none was provided).
+/// Returns a signal which sends a CPBTransition for every transition made by this signal machine.
+/// CPBTransition consists of the "from state", the "to state", the input event, and the event context (or NSNull if none was provided).
 /// If a transition is not registered for an event in a given "from state", the tuple's "to state" will be NSNull.
 /// Will not send an error if an event is sent which has no corresponding transition mapping.
 ///
 /// @return a signal which sends every transition made by this signal machine.
 - (RACSignal *)allTransitions;
 
-/// Returns a signal which sends a tuple for every transition made by this signal machine from the specified state.
-/// The tuple consists of the "from state", the "to state", the input event, and the event context (or NSNull if none was provided).
+/// Returns a signal which sends a CPBTransition for every transition made by this signal machine from the specified state.
+/// CPBTransition consists of the "from state", the "to state", the input event, and the event context (or NSNull if none was provided).
 /// Will not send an error if an event is sent which has no corresponding transition mapping.
 ///
 /// @param fromState The "from state" from which transitions must be made to be sent on the returned signal.
 /// @return a signal which sends every transition made by this signal machine from the specified state.
 - (RACSignal *)transitionsFrom:(NSString *)fromState;
 
-/// Returns a signal which sends a tuple for every transition made by this signal machine from the specified `fromState` to the specified `toState`.
-/// The tuple consists of the "from state", the "to state", the input event, and the event context (or NSNull if none was provided).
+/// Returns a signal which sends a CPBTransition for every transition made by this signal machine from the specified `fromState` to the specified `toState`.
+/// CPBTransition consists of the "from state", the "to state", the input event, and the event context (or NSNull if none was provided).
 /// Will not send an error if an event is sent which has no corresponding transition mapping.
 ///
 /// @param fromState The "from state" from which transitions must be made to be sent on the returned signal.
@@ -67,16 +67,16 @@ extern NSInteger const CPBStateSignalsErrorCodeNoTransitionRegistered;
 /// @return a signal which sends every transition made by this signal machine from the specified `fromState` to the specified `toState`.
 - (RACSignal *)transitionsFrom:(NSString *)fromState to:(NSString *)toState;
 
-/// Returns a signal which sends a tuple for every transition made by this signal machine to the specified state.
-/// The tuple consists of the "from state", the "to state", the input event, and the event context (or NSNull if none was provided).
+/// Returns a signal which sends a CPBTransition for every transition made by this signal machine to the specified state.
+/// CPBTransition consists of the "from state", the "to state", the input event, and the event context (or NSNull if none was provided).
 /// Will not send an error if an event is sent which has no corresponding transition mapping.
 ///
 /// @param toState The "to state" to which transitions must be made to be sent on the returned signal.
 /// @return a signal which sends every transition made by this signal machine to the specified state.
 - (RACSignal *)transitionsTo:(NSString *)toState;
 
-/// Returns a signal which sends a tuple for every transition made by this signal machine that could not find a corresponding registered transition.
-/// The tuple consists of the "from state", NSNull, the input event, and the event context (or NSNull if none was provided).
+/// Returns a signal which sends a CPBTransition for every transition made by this signal machine that could not find a corresponding registered transition.
+/// CPBTransition consists of the "from state", NSNull, the input event, and the event context (or NSNull if none was provided).
 ///
 /// @return a signal which sends every faulted transition made by this signal machine.
 - (RACSignal *)transitionFaults;

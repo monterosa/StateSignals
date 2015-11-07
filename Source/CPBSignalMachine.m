@@ -10,6 +10,8 @@
 
 #import "CPBTransitionTable.h"
 
+#import "CPBTransition.h"
+
 
 NSString * const CPBStateSignalsErrorDomain = @"CPBStateSignalsDomain";
 NSInteger const CPBStateSignalsErrorCodeNoTransitionRegistered = 1;
@@ -68,46 +70,61 @@ NSInteger const CPBStateSignalsErrorCodeNoTransitionRegistered = 1;
 
 - (RACSignal *)allTransitions
 {
-    return self.subject;
+    return [self.subject
+    map:^id(RACTuple *tuple) {
+        return [[CPBTransition alloc] initWithFromState:tuple.first toState:tuple.second event:tuple.third context:tuple.fourth];
+    }];
 }
 
 - (RACSignal *)transitionsFrom:(NSString *)fromState
 {
-    return [self.subject
+    return [[self.subject
     filter:^BOOL(RACTuple *transition) {
         
         return [fromState isEqualToString:transition.first];
         
+    }]
+    map:^id(RACTuple *tuple) {
+        return [[CPBTransition alloc] initWithFromState:tuple.first toState:tuple.second event:tuple.third context:tuple.fourth];
     }];
 }
 
 - (RACSignal *)transitionsFrom:(NSString *)fromState to:(NSString *)toState
 {
-    return [self.subject
+    return [[self.subject
     filter:^BOOL(RACTuple *transition) {
         
         return [fromState isEqualToString:transition.first] && [toState isEqualToString:transition.second];
         
+    }]
+    map:^id(RACTuple *tuple) {
+        return [[CPBTransition alloc] initWithFromState:tuple.first toState:tuple.second event:tuple.third context:tuple.fourth];
     }];
 }
 
 - (RACSignal *)transitionsTo:(NSString *)toState
 {
-    return [self.subject
+    return [[self.subject
     filter:^BOOL(RACTuple *transition) {
         
         return [toState isEqualToString:transition.second];
         
+    }]
+    map:^id(RACTuple *tuple) {
+        return [[CPBTransition alloc] initWithFromState:tuple.first toState:tuple.second event:tuple.third context:tuple.fourth];
     }];
 }
 
 - (RACSignal *)transitionFaults
 {
-    return [self.subject
+    return [[self.subject
     filter:^BOOL(RACTuple *transition) {
         
         return NSNull.null == transition.second;
         
+    }]
+    map:^id(RACTuple *tuple) {
+    return [[CPBTransition alloc] initWithFromState:tuple.first toState:tuple.second event:tuple.third context:tuple.fourth];
     }];
 }
 
@@ -129,10 +146,10 @@ NSInteger const CPBStateSignalsErrorCodeNoTransitionRegistered = 1;
                  
         if (RACEventTypeNext == racEvent.eventType)
         {
-            RACTuple *transition = racEvent.value;
-            NSString *fromState = transition.first;
-            id toState = transition.second;
-            NSString *event = transition.third;
+            CPBTransition *transition = racEvent.value;
+            NSString *fromState = transition.fromState;
+            id toState = transition.toState;
+            NSString *event = transition.event;
             
             if (NSNull.null == toState)
             {
